@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Lecturer implements Serializable {
 	
 	@JsonProperty("id")
-	public int id;
+	public String id;
 	@JsonProperty("name")
 	public String name;
 	@JsonProperty("email")
@@ -17,17 +17,17 @@ public class Lecturer implements Serializable {
 		
 	}
 	
-	public Lecturer(int id , String name , String email) {
+	public Lecturer(String id , String name , String email) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

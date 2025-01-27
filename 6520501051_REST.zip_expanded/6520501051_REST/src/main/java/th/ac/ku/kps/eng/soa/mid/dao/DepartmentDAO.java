@@ -24,7 +24,7 @@ public class DepartmentDAO {
 		try {
 			File file = new File("Department.dat");
 			if (!file.exists()) {
-				Department d1 = new Department(1,"Department of Chem","chem@scu.ac.au");
+				Department d1 = new Department("1","Department of Chem","chem@scu.ac.au");
 				listOfDepartment.add(d1);
 				saveDepartmentList(listOfDepartment);
 			} 
@@ -55,5 +55,16 @@ public class DepartmentDAO {
 				e.printStackTrace();
 			}
 	}
+		
+		public Department getDepartmentById(String id) {
+			List<Department> depList = getAllDepartment();
+			for (Department dep : depList) {
+				if (dep.getId().equalsIgnoreCase(id)) {
+				return dep;
+				}
+			}
+
+			return null;
+		}
 
 }

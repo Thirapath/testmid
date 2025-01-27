@@ -7,23 +7,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Department implements Serializable {
 	
 	@JsonProperty("id")
-	private int id;
+	public String id;
 	@JsonProperty("name")
-	private String name;
+	public String name;
 	@JsonProperty("email")
-	private String email;
+	public String email;
 	
-	public Department(int id , String name , String email) {
+	public Department() {
+		
+	}
+	
+	public Department(String id , String name , String email) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	

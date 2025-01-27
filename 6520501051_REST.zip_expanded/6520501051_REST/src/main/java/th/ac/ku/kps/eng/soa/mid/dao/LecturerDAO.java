@@ -25,8 +25,8 @@ public class LecturerDAO {
 		try {
 			File file = new File("Lecturer.dat");
 			if (!file.exists()) {
-				Lecturer l1 = new Lecturer(1, "Joe doe", "jd1@scu.ac.au");
-				Lecturer l2 = new Lecturer(2, "Jane doe", "jd2@scu.ac.au");
+				Lecturer l1 = new Lecturer("1", "Joe doe", "jd1@scu.ac.au");
+				Lecturer l2 = new Lecturer("2", "Jane doe", "jd2@scu.ac.au");
 				listOfLecturer.add(l1);
 				listOfLecturer.add(l2);
 				saveLecturerList(listOfLecturer);
@@ -59,13 +59,14 @@ public class LecturerDAO {
 			}
 		}
 		
-		public Lecturer getLecturerById(int id) {
-			List<Lecturer> LecList = getAllLecturer();
-			for (Lecturer lec : LecList) {
-			if (lec.getId()==id) {
+		public Lecturer getLecturerById(String id) {
+			List<Lecturer> lecList = getAllLecturer();
+			for (Lecturer lec : lecList) {
+				if (lec.getId().equalsIgnoreCase(id)) {
 				return lec;
+				}
 			}
-			}
+
 			return null;
 		}
 		
@@ -84,7 +85,34 @@ public class LecturerDAO {
 				return 1;
 			}
 				return 0;
-			}
+		}
+		
+		public int updateLecturer(String id) {
+	        List<Lecturer> lecList = getAllLecturer();
+	        for (int i = 0; i < lecList.size(); i++) {
+	        	Lecturer lec = lecList.get(i);
+	            if (lec.getId().equalsIgnoreCase(id)) {
+	            	lecList.remove(i);
+	                saveLecturerList(lecList);
+	                return 1;
+	            }
+	        }
+	        return 0;
+	    }
+		
+		
+		public int deleteLecturer(String id) {
+	        List<Lecturer> lecList = getAllLecturer();
+	        for (int i = 0; i < lecList.size(); i++) {
+	        	Lecturer lec = lecList.get(i);
+	            if (lec.getId().equalsIgnoreCase(id)) {
+	            	lecList.remove(i);
+	                saveLecturerList(lecList);
+	                return 1;
+	            }
+	        }
+	        return 0;
+	    }
 
 
 
