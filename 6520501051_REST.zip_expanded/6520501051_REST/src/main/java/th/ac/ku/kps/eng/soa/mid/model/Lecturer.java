@@ -7,11 +7,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Lecturer implements Serializable {
 	
 	@JsonProperty("id")
-	private int id;
+	public int id;
 	@JsonProperty("name")
-	private String name;
+	public String name;
 	@JsonProperty("email")
-	private String email;
+	public String email;
+	
+	public Lecturer() {
+		
+	}
 	
 	public Lecturer(int id , String name , String email) {
 		this.id = id;

@@ -69,21 +69,21 @@ public class LecturerDAO {
 			return null;
 		}
 		
-		public int addCustomer(Customer cus) {
-			List<Customer> cusList = getAllCustomers();
-			boolean cusExists = false;
-			for (Customer c : cusList) {
-			if (c.name.equalsIgnoreCase(cus.name)) {
-			cusExists = true;
-			break;
+		public int addLecturer(Lecturer lec) {
+			List<Lecturer> lecList = getAllLecturer();
+			boolean lecExists = false;
+			for (Lecturer l : lecList) {
+				if (l.name.equalsIgnoreCase(lec.name)) {
+					lecExists = true;
+					break;
+				}
 			}
+			if (!lecExists) {
+				lecList.add(lec);
+				saveLecturerList(lecList);
+				return 1;
 			}
-			if (!cusExists) {
-			cusList.add(cus);
-			saveCustomerList(cusList);
-			return 1;
-			}
-			return 0;
+				return 0;
 			}
 
 
